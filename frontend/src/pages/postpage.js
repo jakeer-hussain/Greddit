@@ -9,7 +9,9 @@ export default function PostsPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://10.1.131.179:6000/posts")
+    console.log("Fetching posts...")
+    console.log(process.env.BACKEND_URL);
+    fetch("http://localhost:8000" + "/posts")
       .then((res) => res.json())
       .then((data) => {
         setPosts(data.data);
