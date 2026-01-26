@@ -15,20 +15,25 @@ export default function NavBar() {
           <span className="logo-icon">🧵</span>
           <span className="logo-text">Greddit</span>
         </Link>
+        <Link to="/subgreddit" style={{ color: "#d7dadc", textDecoration: "none", marginLeft: "20px", fontSize: "14px", fontWeight: "600" }}>Subgreddit</Link>
       </div>
 
       {/* Center section */}
       <div className="nav-center">
-        <input
-          type="text"
-          placeholder="Search Greddit"
-          className="search-bar"
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              navigate(`/search?q=${e.target.value}`);
-            }
-          }}
-        />
+        <Link to="/search" className="search-link" style={{
+          color: "#d7dadc",
+          textDecoration: "none",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          padding: "6px 12px",
+          borderRadius: "20px",
+          background: "#272729",
+          border: "1px solid #343536"
+        }}>
+          <span style={{ fontSize: "18px" }}>🔍</span>
+          <span style={{ fontSize: "14px", fontWeight: "500" }}>Search Greddit</span>
+        </Link>
       </div>
 
       {/* Right section */}

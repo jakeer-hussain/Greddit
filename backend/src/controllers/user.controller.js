@@ -101,3 +101,30 @@ exports.searchUsers = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+// @desc    Search users or posts
+// @route   GET /users/search-all/:query?type=users|posts
+// @access  Public
+exports.searchAll = async (req, res) => {
+    try {
+        const query = req.params.query;
+        const type = req.query.type || "users";
+
+        if (type === "posts") {
+            const posts = await Post.find({
+                $or: [
+                    { title: { $regex: query, $options: "i" } },
+                    { content: { $regex: query, $options: "i" } }
+                ]
+            }).populate("author", "username profilePic");
+            res.json(posts);
+        } else {
+            const users = await User.find({
+                username: { $regex: query, $options: "i" },
+            }).select("username profilePic bio");
+            res.json(users);
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

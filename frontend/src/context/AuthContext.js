@@ -31,9 +31,15 @@ export const AuthProvider = ({ children }) => {
 
             if (response.status === 200) {
                 setAuthTokens(data);
-                setUser(jwt_decode(data.token));
+                const decoded = jwt_decode(data.token);
+                setUser({ ...data, ...decoded });
                 localStorage.setItem("authTokens", JSON.stringify(data));
-                navigate("/");
+
+                if (data.isAdmin) {
+                    navigate("/admin");
+                } else {
+                    navigate("/");
+                }
             } else {
                 alert(data.message);
             }

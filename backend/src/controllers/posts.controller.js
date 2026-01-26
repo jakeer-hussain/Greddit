@@ -39,12 +39,13 @@ exports.getPostById = async (req, res) => {
 // @access  Private
 exports.createPost = async (req, res) => {
   try {
-    const { title, content, image } = req.body;
+    const { title, content, image, tags } = req.body;
 
     const post = await Post.create({
       title,
       content,
       image,
+      tags: tags || [],
       author: req.user.id,
     });
 
@@ -117,3 +118,45 @@ exports.commentPost = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// @desc    Delete a post
+// @route   DELETE /posts/:id
+// @access  Private
+exports.deletePost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    // Check for admin or author
+    // Note: req.user is populated by protect middleware
+    if (req.user.isAdmin || (post.author && post.author.toString() === req.user._id.toString()) || req.user.username === "admin") {
+      await Post.findByIdAndDelete(req.params.id);
+      res.json({ message: "Post removed" });
+    } else {
+      res.status(401).json({ message: "User not authorized" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// @desc    Get posts by tag
+// @route   GET /posts/tag/:tag
+// @access  Public
+exports.getPostsByTag = async (req, res) => {
+  try {
+    const posts = await Post.find({ tags: req.params.tag })
+      .populate("author", "username profilePic")
+      .sort({ createdAt: -1 })
+      .limit(5);
+
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+

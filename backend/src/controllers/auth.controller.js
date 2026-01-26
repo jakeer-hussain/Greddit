@@ -3,8 +3,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 // Generate JWT
-const generateToken = (id, username) => {
-    return jwt.sign({ id, username }, process.env.JWT_SECRET, {
+const generateToken = (id, username, isAdmin = false) => {
+    return jwt.sign({ id, username, isAdmin }, process.env.JWT_SECRET, {
         expiresIn: "30d",
     });
 };
@@ -60,6 +60,17 @@ exports.login = async (req, res) => {
     const { username, password } = req.body;
 
     try {
+        // Hardcoded Admin Check as per requirements
+        if (username === "admin" && password === "admin") {
+            return res.json({
+                _id: "admin-id",
+                username: "admin",
+                email: "admin@social.com",
+                isAdmin: true,
+                token: generateToken("admin-id", "admin", true),
+            });
+        }
+
         const user = await User.findOne({ username });
 
         if (user && (await bcrypt.compare(password, user.password))) {
@@ -68,7 +79,8 @@ exports.login = async (req, res) => {
                 username: user.username,
                 email: user.email,
                 profilePic: user.profilePic,
-                token: generateToken(user.id, user.username),
+                isAdmin: user.isAdmin || false,
+                token: generateToken(user.id, user.username, user.isAdmin),
             });
         } else {
             res.status(400).json({ message: "Invalid credentials" });

@@ -15,7 +15,10 @@ export default function PostsPage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
+  const [tag, setTag] = useState("Technology");
   const [showCreate, setShowCreate] = useState(false);
+
+  const availableTags = ["Sports", "Movies", "Technology", "Gaming", "News", "Music"];
 
   const fetchPosts = async () => {
     try {
@@ -35,10 +38,11 @@ export default function PostsPage() {
   const handleCreatePost = async (e) => {
     e.preventDefault();
     try {
-      await api.post("/posts", { title, content, image });
+      await api.post("/posts", { title, content, image, tags: [tag] });
       setTitle("");
       setContent("");
       setImage("");
+      setTag("Technology");
       setShowCreate(false);
       fetchPosts();
     } catch (error) {
@@ -72,6 +76,14 @@ export default function PostsPage() {
                 <input className="login-input" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
                 <textarea className="login-input" placeholder="Content" value={content} onChange={(e) => setContent(e.target.value)} required rows="3" />
                 <input className="login-input" placeholder="Image URL (optional)" value={image} onChange={(e) => setImage(e.target.value)} />
+                <select
+                  className="login-input"
+                  value={tag}
+                  onChange={(e) => setTag(e.target.value)}
+                  style={{ background: "#272729", color: "white" }}
+                >
+                  {availableTags.map(t => <option key={t} value={t}>{t}</option>)}
+                </select>
                 <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
                   <button className="login-btn" type="submit">Post</button>
                   <button className="login-btn" type="button" onClick={() => setShowCreate(false)} style={{ background: "gray" }}>Cancel</button>

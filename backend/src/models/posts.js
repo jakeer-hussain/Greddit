@@ -41,6 +41,12 @@ const postSchema = new mongoose.Schema(
           default: Date.now
         }
       }
+    ],
+    tags: [
+      {
+        type: String,
+        trim: true
+      }
     ]
   },
   { timestamps: true }

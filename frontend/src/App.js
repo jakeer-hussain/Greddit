@@ -8,6 +8,8 @@ import PostPage from "./pages/postpage";
 import SinglePostPage from "./pages/singlepostpage";
 import ProfilePage from "./pages/profile";
 import SearchPage from "./pages/search";
+import AdminPage from "./pages/AdminPage";
+import SubgredditPage from "./pages/SubgredditPage";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/profile/:username" element={<ProfilePage />} />
         <Route path="/post/:id" element={<SinglePostPage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/subgreddit" element={<SubgredditPage />} />
       </Routes>
     </AuthProvider>
   );
