@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 function Login({ onSuccess }) {
 

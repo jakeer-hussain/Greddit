@@ -1,44 +1,47 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AuthContext from "../context/AuthContext";
 import "../Stylesheets/login.css";
-import { useNavigate } from "react-router-dom";
 
-export default function Login( { setUser } ) {
-  const navigate = useNavigate();
+export default function Login() {
+  const { loginUser } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleNext() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (!username || !password) {
       alert("Enter username & password");
       return;
     }
-
-    setUser({ username, password });
-
-    navigate("/details");
-  }
+    loginUser(username, password);
+  };
 
   return (
     <div className="login-container">
       <div className="login-box">
         <h2 className="login-title">Login</h2>
-
-        <input
-          className="login-input"
-          placeholder="Username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-
-        <input
-          className="login-input"
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <button className="login-btn" onClick={handleNext}>
-          Continue
-        </button>
+        <form onSubmit={handleSubmit}>
+          <input
+            className="login-input"
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            className="login-input"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className="login-btn" type="submit">
+            Login
+          </button>
+        </form>
+        <p style={{ marginTop: "10px", textAlign: "center" }}>
+          Don't have an account? <a href="/register">Register</a>
+        </p>
       </div>
     </div>
   );
