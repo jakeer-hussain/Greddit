@@ -1,0 +1,51 @@
+.welcomescreendiv {
+    display: flex;
+    flex-direction: column;   /* stack h1 + p */
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;        /* 🔥 THIS IS IMPORTANT */
+    text-align: center;
+}
+
+.heading {
+    font-size: 600%;
+    color: antiquewhite;
+}
+
+.quote {
+  font-size: 300%;
+  font-style: italic;
+  color: antiquewhite;
+}
+
+.greddit {
+  color: #ff3b3b;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.dashboard-background {
+  background: linear-gradient(
+    -45deg,
+    #ee7752,
+    #e73c7e,
+    #23a6d5,
+    #23d5ab
+  );
+
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
