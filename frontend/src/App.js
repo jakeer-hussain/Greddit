@@ -10,6 +10,8 @@ import ProfilePage from "./pages/profile";
 import SearchPage from "./pages/search";
 import AdminPage from "./pages/AdminPage";
 import SubgredditPage from "./pages/SubgredditPage";
+import CommunityHome from "./pages/CommunityHome";
+import ChannelChat from "./pages/ChannelChat";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path="/search" element={<SearchPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/subgreddit" element={<SubgredditPage />} />
+        <Route path="/community" element={<CommunityHome />} />
+        <Route path="/community/:channelId" element={<ChannelChat />} />
       </Routes>
     </AuthProvider>
   );

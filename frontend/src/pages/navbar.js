@@ -16,6 +16,7 @@ export default function NavBar() {
           <span className="logo-text">Greddit</span>
         </Link>
         <Link to="/subgreddit" style={{ color: "#d7dadc", textDecoration: "none", marginLeft: "20px", fontSize: "14px", fontWeight: "600" }}>Subgreddit</Link>
+        <Link to="/community" style={{ color: "#d7dadc", textDecoration: "none", marginLeft: "20px", fontSize: "14px", fontWeight: "600" }}>Community</Link>
       </div>
 
       {/* Center section */}
