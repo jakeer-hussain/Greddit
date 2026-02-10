@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
+import { Link } from "react-router-dom";
 import "../Stylesheets/login.css";
 
 export default function Login() {
@@ -40,7 +41,7 @@ export default function Login() {
           </button>
         </form>
         <p style={{ marginTop: "10px", textAlign: "center" }}>
-          Don't have an account? <a href="/register">Register</a>
+          Don't have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>

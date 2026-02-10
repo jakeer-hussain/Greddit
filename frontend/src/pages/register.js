@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
+import { Link } from "react-router-dom";
 import "../Stylesheets/login.css"; // Reusing login styles for consistency
 
 export default function Register() {
@@ -48,7 +49,7 @@ export default function Register() {
                     </button>
                 </form>
                 <p style={{ marginTop: "10px", textAlign: "center" }}>
-                    Already have an account? <a href="/login">Login</a>
+                    Already have an account? <Link to="/login">Login</Link>
                 </p>
             </div>
         </div>
