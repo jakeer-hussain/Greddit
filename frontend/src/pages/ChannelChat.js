@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useRef, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import NavBar from "./navbar";
 import api from "../utils/api";
 import AuthContext from "../context/AuthContext";
@@ -168,7 +168,4 @@ export default function ChannelChat() {
     );
 }
 
-// Helper to provide Link since it was missing in the logged-out view
-function Link({ children, to, style }) {
-    return <a href={to} style={{ ...style, textDecoration: "none" }}>{children}</a>;
-}
+
