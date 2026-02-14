@@ -21,8 +21,11 @@ export default function Register() {
     return (
         <div className="login-container">
             <div className="login-box">
-                <h2 className="login-title">Register</h2>
-                <form onSubmit={handleSubmit}>
+                <div className="login-header">
+                    <Link to="/" className="login-logo">Greddit</Link>
+                    <h2 className="login-title">Sign Up</h2>
+                </div>
+                <form onSubmit={handleSubmit} className="login-form">
                     <input
                         className="login-input"
                         type="text"
@@ -45,11 +48,11 @@ export default function Register() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <button className="login-btn" type="submit">
-                        Register
+                        Sign Up
                     </button>
                 </form>
-                <p style={{ marginTop: "10px", textAlign: "center" }}>
-                    Already have an account? <Link to="/login">Login</Link>
+                <p className="login-footer">
+                    Already a redditor? <Link to="/login">Log In</Link>
                 </p>
             </div>
         </div>

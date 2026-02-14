@@ -20,8 +20,11 @@ export default function Login() {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2 className="login-title">Login</h2>
-        <form onSubmit={handleSubmit}>
+        <div className="login-header">
+          <Link to="/" className="login-logo">Greddit</Link>
+          <h2 className="login-title">Log in</h2>
+        </div>
+        <form onSubmit={handleSubmit} className="login-form">
           <input
             className="login-input"
             type="text"
@@ -37,11 +40,11 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className="login-btn" type="submit">
-            Login
+            Log In
           </button>
         </form>
-        <p style={{ marginTop: "10px", textAlign: "center" }}>
-          Don't have an account? <Link to="/register">Register</Link>
+        <p className="login-footer">
+          New to Greddit? <Link to="/register">Sign Up</Link>
         </p>
       </div>
     </div>
