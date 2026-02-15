@@ -5,15 +5,30 @@ const Post = require("../models/posts");
 // @access  Public
 exports.getAllPosts = async (req, res) => {
   try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+    const skip = (page - 1) * limit;
+
+    const totalPosts = await Post.countDocuments();
+
     const posts = await Post.find()
       .populate("author", "username profilePic")
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
 
-    res.status(200).json(posts);
+    res.status(200).json({
+      posts,
+      currentPage: page,
+      totalPages: Math.ceil(totalPosts / limit),
+      totalPosts
+    });
+
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 // @desc    Get single post
 // @route   GET /posts/:id

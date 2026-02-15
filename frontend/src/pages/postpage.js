@@ -11,6 +11,10 @@ export default function PostsPage() {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+
   // New Post State
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -22,18 +26,21 @@ export default function PostsPage() {
 
   const fetchPosts = async () => {
     try {
-      const { data } = await api.get("/posts");
-      setPosts(data);
-      setLoading(false);
+      setLoading(true);
+      const { data } = await api.get(`/posts?page=${page}&limit=5`);
+      console.log(data)
+      setPosts(data.posts);
+      setTotalPages(data.totalPages);
     } catch (err) {
       console.error("Error fetching posts:", err);
+    } finally{
       setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [page]);
 
   const handleCreatePost = async (e) => {
     e.preventDefault();
@@ -44,7 +51,7 @@ export default function PostsPage() {
       setImage("");
       setTag("Technology");
       setShowCreate(false);
-      fetchPosts();
+      setPage(1);
     } catch (error) {
       alert("Failed to create post");
     }
@@ -121,7 +128,35 @@ export default function PostsPage() {
             </div>
           </div>
         ))}
+
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "15px",
+          margin: "20px"
+        }}>
+          <button
+            disabled={page === 1}
+            onClick={() => setPage(prev => prev - 1)}
+          >
+            Previous
+          </button>
+
+          <span style={{ color: "white" }}>
+            Page {page} of {totalPages}
+          </span>
+
+          <button
+            disabled={page === totalPages}
+            onClick={() => setPage(prev => prev + 1)}
+          >
+            Next
+          </button>
+        </div>
+
+        
       </div>
+
     </>
   );
 }

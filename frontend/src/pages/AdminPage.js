@@ -19,7 +19,7 @@ export default function AdminPage() {
                 : `/posts`;
 
             const { data } = await api.get(endpoint);
-            setResults(Array.isArray(data) ? data : []);
+            setResults(Array.isArray(data) ? data : data.posts || []);
         } catch (err) {
             console.error(err);
             setError("Failed to fetch posts.");
