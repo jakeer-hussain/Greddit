@@ -1,0 +1,140 @@
+/* ==========================
+   SUBGREDDIT PAGE
+========================== */
+
+.sub-page {
+  background-color: #030303;
+  min-height: 100vh;
+  margin-top: 90px;
+  color: #d7dadc;
+}
+
+.sub-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Header */
+
+.sub-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sub-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ff4500;
+}
+
+.sub-subtitle {
+  color: #818384;
+  margin-top: 10px;
+}
+
+/* Tag Buttons */
+
+.sub-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.sub-tag-btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid #343536;
+  background: #272729;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sub-tag-btn.active {
+  border: 1px solid #ff4500;
+  background: #1a1a1b;
+  color: #ff4500;
+}
+
+.sub-tag-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Post Card */
+
+.sub-post-card {
+  background: #1a1a1b;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 6px;
+  border: 1px solid #343536;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.sub-post-card:hover {
+  background: #252525;
+  transform: translateY(-3px);
+}
+
+.sub-post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sub-post-avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.sub-post-author {
+  color: #d7dadc;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.sub-post-author:hover {
+  text-decoration: underline;
+}
+
+.sub-post-date {
+  color: #818384;
+  font-size: 12px;
+}
+
+.sub-post-title {
+  margin: 5px 0;
+  font-size: 18px;
+  color: white;
+}
+
+.sub-post-content {
+  color: #d7dadc;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.sub-post-footer {
+  margin-top: 15px;
+  color: #818384;
+  font-size: 12px;
+}
+
+.sub-posts-list {
+  margin-top: 20px;
+}
+
+.sub-loading,
+.sub-empty {
+  text-align: center;
+  color: #818384;
+  margin-top: 20px;
+}
