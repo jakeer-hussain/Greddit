@@ -24,4 +24,8 @@ const messageSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
+// Chat messages retrieval (channel + chronological order)
+messageSchema.index({ channel: 1, createdAt: 1 });
+
+
 module.exports = mongoose.model("ChannelMessage", messageSchema);

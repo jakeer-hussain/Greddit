@@ -52,4 +52,14 @@ const postSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// Pagination (global feed)
+postSchema.index({ createdAt: -1 });
+
+// Profile page (author + sorting)
+postSchema.index({ author: 1, createdAt: -1 });
+
+// Tag filtering (subreddit-style)
+postSchema.index({ tags: 1, createdAt: -1 });
+
+
 module.exports = mongoose.model("Post", postSchema);

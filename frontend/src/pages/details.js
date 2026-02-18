@@ -29,7 +29,7 @@ export default function Details({ user }) {
 
     // TODO: store userDetails (API / localStorage)
 
-    navigate("/postpage");
+    navigate("/postFeed");
   }
 
   return (

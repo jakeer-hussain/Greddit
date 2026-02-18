@@ -2,7 +2,7 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import "./dashboard.css";
 import NavBar from "./navbar";
-import PostPage from "./postpage";
+import PostPage from "./postFeed";
 
 export default function Dashboard() {
     const { user } = useContext(AuthContext);

@@ -1,0 +1,206 @@
+/* ========================
+   FEED PAGE STYLES
+======================== */
+
+.feed-page {
+  margin-top: 110px;
+  padding: 0 15px;
+  color: white;
+}
+
+/* ========================
+   CREATE POST
+======================== */
+
+.feed-create-wrapper {
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.feed-create-btn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: none;
+  background: #0079d3;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.feed-create-btn:hover {
+  background: #1484d6;
+}
+
+.feed-create-form {
+  background: #1e1e1e;
+  border: 1px solid #2f2f2f;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feed-create-form input,
+.feed-create-form textarea,
+.feed-create-form select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #343536;
+  background: #272729;
+  color: white;
+}
+
+.feed-form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.feed-form-buttons button {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.feed-form-buttons button:first-child {
+  background: #0079d3;
+  color: white;
+}
+
+.cancel-btn {
+  background: gray;
+  color: white;
+}
+
+/* ========================
+   POSTS
+======================== */
+
+.feed-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feed-post-card {
+  display: flex;
+  background: #1e1e1e;
+  border: 1px solid #2f2f2f;
+  border-radius: 8px;
+  padding: 16px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.feed-post-card:hover {
+  background: #252525;
+  transform: translateY(-2px);
+}
+
+.feed-vote-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+  font-size: 18px;
+  color: #aaa;
+}
+
+.feed-vote-arrow {
+  cursor: pointer;
+}
+
+.feed-vote-arrow:hover {
+  color: #0079d3;
+}
+
+.feed-vote-count {
+  font-weight: bold;
+  margin: 6px 0;
+}
+
+.feed-post-content {
+  flex: 1;
+  cursor: pointer;
+}
+
+.feed-post-title {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.feed-post-meta {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.feed-post-author {
+  color: #0079d3;
+  font-weight: 600;
+}
+
+.feed-post-image {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.feed-post-text {
+  font-size: 14px;
+  color: #ddd;
+  line-height: 1.5;
+}
+
+.feed-post-footer {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* ========================
+   PAGINATION
+======================== */
+
+.feed-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.feed-pagination button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.feed-pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========================
+   RESPONSIVE
+======================== */
+
+@media (max-width: 768px) {
+  .feed-post-card {
+    flex-direction: column;
+  }
+
+  .feed-vote-section {
+    flex-direction: row;
+    gap: 10px;
+    width: auto;
+    margin-bottom: 10px;
+  }
+}

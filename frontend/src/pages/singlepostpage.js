@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../Stylesheets/post.css";
+import "../Stylesheets/singlePost.css";
 import NavBar from "./navbar";
 import api from "../utils/api";
 import AuthContext from "../context/AuthContext";
@@ -56,70 +56,118 @@ export default function SinglePostPage() {
   if (!post) return <div style={{ color: "white", textAlign: "center", marginTop: "20px" }}>Post not found</div>;
 
   return (
-    <>
-      <NavBar />
+  <>
+    <NavBar />
 
-      <div className="single-post-page" style={{ maxWidth: "800px", margin: "20px auto", color: "white" }}>
+    <div className="single-page-wrapper">
 
-        <div className="post-container">
-          <div className="vote-section">
-            <div className="vote-arrow" onClick={handleLike} style={{ cursor: "pointer" }}>⬆️</div>
-            <div className="vote-count">{post.likes.length}</div>
+      <div className="single-post-card">
+
+        <div className="single-vote-section">
+          <div
+            className="single-vote-arrow"
+            onClick={handleLike}
+          >
+            ⬆️
           </div>
-
-          <div className="post-content">
-            <h1 className="post-title">{post.title}</h1>
-
-            <p className="post-meta">
-              Posted by{" "}
-              <span className="post-author">u/{post.author?.username || "Unknown"}</span> •{" "}
-              <span className="post-time">{new Date(post.createdAt).toLocaleDateString()}</span>
-            </p>
-
-            {post.image && (
-              <img src={post.image} alt="post" className="post-image" />
-            )}
-
-            <p className="post-text">{post.content}</p>
+          <div className="single-vote-count">
+            {post.likes.length}
           </div>
         </div>
 
-        {/* Comment Section */}
-        <div className="comments-section" style={{ marginTop: "20px", padding: "20px", background: "#1a1a1b", borderRadius: "5px" }}>
-          <h3>Comments</h3>
+        <div className="single-post-body">
 
-          {user && (
-            <form onSubmit={handleCommentSubmit} style={{ marginBottom: "20px" }}>
-              <textarea
-                className="comment-input"
-                placeholder="What are your thoughts?"
-                value={commentText}
-                onChange={(e) => setCommentText(e.target.value)}
-                style={{ width: "100%", padding: "10px", borderRadius: "5px", background: "#272729", border: "1px solid #343536", color: "white" }}
-                rows="3"
-              />
-              <button className="comment-btn" type="submit" style={{ marginTop: "10px", padding: "5px 15px", borderRadius: "20px", border: "none", background: "white", fontWeight: "bold", cursor: "pointer" }}>
-                Comment
-              </button>
-            </form>
+          <h1 className="single-post-title">
+            {post.title}
+          </h1>
+
+          <div className="single-post-meta">
+            Posted by{" "}
+            <span className="single-post-author">
+              u/{post.author?.username || "Unknown"}
+            </span>{" "}
+            •{" "}
+            {new Date(post.createdAt).toLocaleDateString()}
+          </div>
+
+          {post.image && (
+            <img
+              src={post.image}
+              alt="post"
+              className="single-post-image"
+            />
           )}
 
-          <div className="comments-list">
-            {post.comments.map((comment, index) => (
-              <div key={index} className="comment" style={{ marginBottom: "15px", borderBottom: "1px solid #343536", paddingBottom: "10px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "5px" }}>
-                  {comment.user?.profilePic && <img src={comment.user.profilePic} alt="avatar" style={{ width: "30px", height: "30px", borderRadius: "50%" }} />}
-                  <strong>{comment.user?.username || "Unknown"}</strong>
-                  <span style={{ fontSize: "12px", color: "#818384" }}>{new Date(comment.createdAt).toLocaleDateString()}</span>
-                </div>
-                <p>{comment.text}</p>
+          <p className="single-post-text">
+            {post.content}
+          </p>
+
+        </div>
+      </div>
+
+      {/* Comments Section */}
+      <div className="single-comments-card">
+        <h3>Comments</h3>
+
+        {user && (
+          <form
+            onSubmit={handleCommentSubmit}
+            className="single-comment-form"
+          >
+            <textarea
+              placeholder="What are your thoughts?"
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
+              rows="3"
+            />
+
+            <button type="submit">
+              Comment
+            </button>
+          </form>
+        )}
+
+        <div className="single-comments-list">
+          {post.comments.map((comment, index) => (
+            <div
+              key={index}
+              className="single-comment-item"
+            >
+              <div className="single-comment-header">
+                {comment.user?.profilePic && (
+                  <img
+                    src={comment.user.profilePic}
+                    alt="avatar"
+                    className="single-comment-avatar"
+                  />
+                )}
+
+                <strong>
+                  {comment.user?.username || "Unknown"}
+                </strong>
+
+                <span className="single-comment-date">
+                  {new Date(comment.createdAt).toLocaleDateString()}
+                </span>
               </div>
-            ))}
-            {post.comments.length === 0 && <p style={{ color: "#818384" }}>No comments yet</p>}
-          </div>
+
+              <p className="single-comment-text">
+                {comment.text}
+              </p>
+            </div>
+          ))}
+
+          {post.comments.length === 0 && (
+            <p className="single-no-comments">
+              No comments yet
+            </p>
+          )}
         </div>
 
       </div>
-    </>
-  );
+
+    </div>
+  </>
+);
+
 }

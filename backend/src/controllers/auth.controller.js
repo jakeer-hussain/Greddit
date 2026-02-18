@@ -1,13 +1,7 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-
-// Generate JWT
-const generateToken = (id, username, isAdmin = false) => {
-    return jwt.sign({ id, username, isAdmin }, process.env.JWT_SECRET, {
-        expiresIn: "30d",
-    });
-};
+const {generateAccessToken, generateRefreshToken} = require("../utils/generateToken");
 
 // @desc    Register a new user
 // @route   POST /auth/register
@@ -37,13 +31,13 @@ exports.register = async (req, res) => {
             email,
             password: hashedPassword,
         });
-
+ 
         if (user) {
             res.status(201).json({
                 _id: user.id,
                 username: user.username,
                 email: user.email,
-                token: generateToken(user.id, user.username),
+                token: generateAccessToken(user.id),
             });
         } else {
             res.status(400).json({ message: "Invalid user data" });
@@ -60,33 +54,44 @@ exports.login = async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        // Hardcoded Admin Check as per requirements
-        if (username === "admin" && password === "admin") {
-            return res.json({
-                _id: "admin-id",
-                username: "admin",
-                email: "admin@social.com",
-                isAdmin: true,
-                token: generateToken("admin-id", "admin", true),
+        if (!username || !password) {
+            return res.status(400).json({
+                message: "Please provide username and password"
             });
         }
 
+        // Find user
         const user = await User.findOne({ username });
 
-        if (user && (await bcrypt.compare(password, user.password))) {
-            res.json({
-                _id: user.id,
-                username: user.username,
-                email: user.email,
-                profilePic: user.profilePic,
-                isAdmin: user.isAdmin || false,
-                token: generateToken(user.id, user.username, user.isAdmin),
+        if (!user) {
+            return res.status(400).json({
+                message: "Invalid credentials"
             });
-        } else {
-            res.status(400).json({ message: "Invalid credentials" });
         }
+
+        // Compare password
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.status(400).json({
+                message: "Invalid credentials"
+            });
+        }
+
+        // Successful login
+        res.status(200).json({
+            _id: user.id,
+            username: user.username,
+            email: user.email,
+            profilePic: user.profilePic,
+            role: user.role,
+            token: generateAccessToken(user.id),
+        });
+
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({
+            message: error.message
+        });
     }
 };
 

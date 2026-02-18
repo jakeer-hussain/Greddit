@@ -24,7 +24,7 @@ export default function SubgredditPage() {
     };
 
     return (
-        <div style={{ backgroundColor: "#030303", minHeight: "100vh", color: "#d7dadc" }}>
+        <div style={{ backgroundColor: "#030303", minHeight: "100vh", marginTop: "30px", color: "#d7dadc" }}>
             <NavBar />
             <div style={{ maxWidth: "800px", margin: "0 auto", padding: "40px 20px" }}>
                 <header style={{ marginBottom: "30px", textAlign: "center" }}>

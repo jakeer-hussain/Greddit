@@ -65,7 +65,7 @@ export default function ProfilePage() {
     return (
         <>
             <NavBar />
-            <div className="profile-container" style={{ maxWidth: "800px", margin: "20px auto", color: "white" }}>
+            <div className="profile-container" style={{ maxWidth: "800px", margin: "20px auto", marginTop: "100px", color: "white" }}>
                 {/* Header Section */}
                 <div className="profile-header" style={{ display: "flex", alignItems: "center", gap: "20px", padding: "20px", background: "#1a1a1b", borderRadius: "5px" }}>
                     <img

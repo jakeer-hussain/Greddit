@@ -39,7 +39,7 @@ export default function SearchPage() {
     return (
         <>
             <NavBar />
-            <div className="search-page" style={{ maxWidth: "800px", margin: "20px auto", color: "white", padding: "0 20px" }}>
+            <div className="search-page" style={{ maxWidth: "800px", margin: "0px auto", marginTop: "100px", color: "white", padding: "0 20px" }}>
                 <div className="search-controls" style={{ marginBottom: "30px", background: "#1a1a1b", padding: "20px", borderRadius: "8px", border: "1px solid #343536" }}>
                     <form onSubmit={handleSearch} style={{ display: "flex", gap: "10px", marginBottom: "15px" }}>
                         <input

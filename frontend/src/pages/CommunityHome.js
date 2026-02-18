@@ -53,7 +53,7 @@ export default function CommunityHome() {
     };
 
     return (
-        <div style={{ backgroundColor: "#030303", minHeight: "100vh", color: "#d7dadc" }}>
+        <div style={{ backgroundColor: "#030303", minHeight: "100vh", marginTop: "50px", color: "#d7dadc" }}>
             <NavBar />
             <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "40px 20px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "30px" }}>
