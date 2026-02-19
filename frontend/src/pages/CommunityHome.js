@@ -91,7 +91,7 @@ export default function CommunityHome() {
                     />
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "20px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", columnGap: "50px", rowGap: "50px" }}>
                     {channels.map(channel => (
                         <Link to={`/community/${channel._id}`} key={channel._id} style={{ textDecoration: "none" }}>
                             <div style={{
