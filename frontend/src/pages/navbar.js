@@ -41,8 +41,29 @@ export default function NavBar() {
       <div className="nav-right">
         {user ? (
           <>
-            <span style={{ marginRight: "10px", color: "white" }}>Hello, {user.username}</span>
-            <Link to={`/profile/${user.username}`} style={{ color: "white", marginRight: "10px" }}>Profile</Link>
+            <span style={{ marginRight: "10px", color: "white" }}>
+              Hello, {user.username}
+            </span>
+
+            <Link to={`/profile/${user.username}`} style={{ color: "white", marginRight: "10px" }}>
+              Profile
+            </Link>
+
+            {/* ⭐ ADMIN PANEL LINK (visible only for admins) */}
+            {user.role === "admin" && (
+              <Link
+                to="/admin/posts"
+                style={{
+                  color: "#ff5353",
+                  marginRight: "10px",
+                  fontWeight: "700",
+                  textDecoration: "none"
+                }}
+              >
+                Admin Panel
+              </Link>
+            )}
+
             <button className="auth-btn" onClick={logoutUser}>Logout</button>
           </>
         ) : (

@@ -25,7 +25,7 @@ function App() {
         <Route path="/profile/:username" element={<ProfilePage />} />
         <Route path="/post/:id" element={<SinglePostPage />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin/posts" element={<AdminPage />} />
         <Route path="/subgreddit" element={<SubgredditPage />} />
         <Route path="/community" element={<CommunityHome />} />
         <Route path="/community/:channelId" element={<ChannelChat />} />

@@ -1,0 +1,151 @@
+/* Background */
+.admin-bg {
+  background-color: #030303;
+  min-height: 100vh;
+  color: #d7dadc;
+}
+
+/* Container */
+.admin-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Header */
+.admin-header {
+  margin-bottom: 40px;
+  border-bottom: 1px solid #343536;
+  padding-bottom: 20px;
+}
+
+.admin-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff4500;
+}
+
+.admin-subtitle {
+  color: #818384;
+}
+
+/* Search Card */
+.admin-search-card {
+  background: #1a1a1b;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #343536;
+  margin-bottom: 30px;
+}
+
+.admin-search-form {
+  display: flex;
+  gap: 10px;
+}
+
+.admin-search-input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #343536;
+  background: #272729;
+  color: white;
+  outline: none;
+}
+
+.admin-search-btn {
+  padding: 10px 24px;
+  border-radius: 20px;
+  border: none;
+  background: #ff4500;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Loading & Error */
+.admin-loading {
+  text-align: center;
+  color: #818384;
+}
+
+.admin-error {
+  text-align: center;
+  color: #ff4500;
+}
+
+.admin-empty {
+  text-align: center;
+  color: #818384;
+}
+
+/* Posts List */
+.admin-post-card {
+  background: #1a1a1b;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 5px;
+  border: 1px solid #343536;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.admin-post-left {
+  flex: 1;
+}
+
+.admin-post-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.admin-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.admin-username {
+  color: #d7dadc;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.admin-date {
+  color: #818384;
+  font-size: 12px;
+}
+
+/* Post Content */
+.admin-post-title {
+  margin: 5px 0;
+  font-size: 18px;
+  color: white;
+}
+
+.admin-post-content {
+  color: #d7dadc;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Delete Button */
+.admin-delete-btn {
+  background: #381212;
+  color: #ff585b;
+  border: 1px solid #ff585b;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 20px;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.admin-delete-btn:hover {
+  background: #ff585b;
+  color: white;
+}
