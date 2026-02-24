@@ -1,5 +1,8 @@
 # Greddit: Professional Social Media & Community Platform
 
+[![Live Demo](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://greddit-i2ndrp7ez-greddit.vercel.app/)
+
+
 ![Project Banner](./coverimage.jpg)
 
 ## 🌐 Introduction
@@ -7,6 +10,8 @@
 **Greddit** is a comprehensive, full-stack social networking solution engineered to facilitate community-driven content sharing and engagement. Inspired by the architectural pillars of Reddit, the platform provides a scalable environment for users to create, categorize, and interact with diverse media content. 
 
 Built with the **MERN** stack (MongoDB, Express, React, Node.js), Greddit emphasizes security via stateless authentication, high-performance data modeling, and a premium, responsive user interface.
+
+**🚀 [Live Deployment Link](https://greddit-i2ndrp7ez-greddit.vercel.app/)**
 
 ---
 
@@ -155,9 +160,6 @@ Contributions are what make the open source community such an amazing place to l
 
 ---
 
-## 📄 License
-Distributed under the **MIT License**. See `LICENSE` for more information.
-
 ---
 
 ## 📧 Contact
@@ -166,4 +168,3 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 Project Link: [https://github.com/jakeer-hussain/Greddit](https://github.com/jakeer-hussain/Greddit)
 
 ---
-**Built with precision and ❤️ by Jakeer Hussain**
